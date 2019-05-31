@@ -3,9 +3,9 @@
 from distutils.core import setup
 
 
-setup(name='Dots',
+setup(name='Equilibrium',
       version='0.0',
       description='Some sort of simulator',
       author='Sufendy',
-      packages=['ui', 'dots']
+      packages=['equilibrium']
       )
