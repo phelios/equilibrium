@@ -6,6 +6,7 @@ from equilibrium.actors.atom import Atom
 from equilibrium.units import direction
 from equilibrium.units.position import Position
 from simulator.drawer.atom_drawer import AtomDrawer
+from simulator.drawer.atom_drawer_box import AtomDrawerBox
 
 
 class Simulator:
@@ -34,7 +35,7 @@ class Simulator:
             atom.speed = random.randint(1, 10)
             atom.position = self.rand_coordinate()
 
-            agent = AtomDrawer(atom)
+            agent = AtomDrawerBox(atom)
             agent.draw()
             atoms.append(agent)
 
