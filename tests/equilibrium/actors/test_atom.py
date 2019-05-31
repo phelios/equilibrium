@@ -14,3 +14,20 @@ class TestBaseCasee(TestCase):
 
         self.assertEqual(test_actor.x, 1)
         self.assertEqual(test_actor.y, 1)
+
+    def test_random(self):
+        from random import randint
+
+        results = {}
+
+        rng = (-1, 1)
+
+        for x in range(rng[0], rng[1] + 1):
+            results[x] = 0
+
+        # self.assertEqual(results, {})
+
+        for x in range(1000):
+            results[randint(*rng)] += 1
+
+        self.assertEqual(results, {})

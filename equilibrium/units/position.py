@@ -4,6 +4,9 @@ class Position:
         self.y = y
         self.z = z
 
+    def to_tuple(self):
+        return (self.x, self.y, self.z)
+
     def __repr__(self):
         prop = {
             'x': self.x,

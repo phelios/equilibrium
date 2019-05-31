@@ -7,7 +7,7 @@ class Atom(BaseActor):
 
     def __init__(self, name):
         super().__init__(name)
-        self.size = 1
+        self.size = 10
 
     def update(self):
         self.position.x += randint(-1, 1)

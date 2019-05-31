@@ -6,7 +6,7 @@ from equilibrium.units.position import Position
 class BaseActor:
     def __init__(self, name):
         self.name = name
-        self.position = Position(0, 0, 0)
+        self.position = Position(0, 0, 50)
         self.size = 100
         self.composition = []
 
