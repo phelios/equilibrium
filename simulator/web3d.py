@@ -1,8 +1,9 @@
 import logging
-from vpython import *
+from vpython import scene, local_light, color, rate
+import random
 
 from equilibrium.actors.atom import Atom
-from equilibrium.actors.world import World
+from equilibrium.units import direction
 from equilibrium.units.position import Position
 from simulator.drawer.atom_drawer import AtomDrawer
 
@@ -11,14 +12,29 @@ class Simulator:
     def __init__(self):
         logging.getLogger().setLevel(logging.INFO)
 
+    @staticmethod
+    def _rand_direction():
+        directions = [direction.NORTH, direction.EAST, direction.SOUTH, direction.WEST]
+        return directions[random.randint(0, len(directions) - 1)]
+
+    @staticmethod
+    def rand_coordinate():
+        def rand():
+            return random.randint(-1000, 1000)
+        return Position(rand(), rand(), rand())
+
     def run(self):
-        # world = World("Universe One")
-
-
         atoms = []
 
         for x in range(500):
-            agent = AtomDrawer(Atom(f"H{x}"))
+
+            atom = Atom(f"H{x}")
+            atom.size = random.randint(1, 100)
+            atom.direction = self._rand_direction()
+            atom.speed = random.randint(1, 10)
+            atom.position = self.rand_coordinate()
+
+            agent = AtomDrawer(atom)
             agent.draw()
             atoms.append(agent)
 
@@ -31,13 +47,9 @@ class Simulator:
         atoms[0].object.emissive = True
         atoms[0].object.color = color.white
 
-        # world.add(agent1)
-
-        # counter = 0
         while True:
             rate(60)
 
-            # counter += 1
             for atom in atoms:
                 atom.update()
 

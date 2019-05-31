@@ -10,8 +10,11 @@ class Atom(BaseActor):
         self.size = 10
 
     def update(self):
-        self.position.x += randint(-1, 1)
-        self.position.y += randint(-1, 1)
-        self.position.z += randint(-1, 1)
+        self.position.x += self.random_movement()
+        self.position.y += self.random_movement()
+        self.position.z += self.random_movement()
 
         super().update()
+
+    def random_movement(self):
+        return randint(-self.speed, self.speed)

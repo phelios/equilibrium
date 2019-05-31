@@ -1,5 +1,6 @@
 import logging
 
+from equilibrium.units import direction
 from equilibrium.units.position import Position
 
 
@@ -8,6 +9,8 @@ class BaseActor:
         self.name = name
         self.position = Position(0, 0, 50)
         self.size = 100
+        self.speed = 0
+        self.direction = direction.NORTH
         self.composition = []
 
     def place(self, x, y, z):
